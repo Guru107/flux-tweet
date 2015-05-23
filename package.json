@@ -1,0 +1,23 @@
+{
+  "name": "twitter-flux",
+  "version": "1.0.0",
+  "description": "Simple react flux application",
+  "author": "Gurudatt",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.7.1",
+    "es6-promise": "^2.1.1",
+    "flux": "^2.0.3",
+    "gulp": "^3.8.11",
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.5.2",
+    "gulp-livereload": "^3.8.0",
+    "object-assign": "^2.0.0",
+    "react": "^0.13.3",
+    "reactify": "^1.1.1",
+    "simple-twitter": "^1.0.7",
+    "st": "^0.5.3",
+    "superagent": "^1.2.0",
+    "twitter": "^1.2.5"
+  }
+}
