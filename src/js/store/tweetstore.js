@@ -6,12 +6,15 @@
 var TweetDispatcher = require('../dispatcher/tweetdispatcher'),//Include dispatcher
     EventEmitter = require('events').EventEmitter,//Node's event emitter
     TweetConstants = require('../constants/TweetConstants'),//Action Constants
-    assign = require('object-assign'),
-    request = require('superagent');//to make network calls
+    assign = require('object-assign');
 
 
 var CHANGE_EVENT = 'change';
 var tweets = [];
+
+function loadTweets(data){
+    tweets = data;
+}
 
 var TweetStore = assign({}, EventEmitter.prototype, {
 
@@ -35,13 +38,10 @@ module.exports = TweetStore;
 
 TweetDispatcher.register(function(payload) {
     console.log("TweetStore - register payload: " + JSON.stringify(payload));
-   request.get('http://127.0.0.1:3004/').end(function(error,response){
-        if(!error){
-            tweets = response.body;
-            TweetStore.emitChange();
-        }
-            
-
-   });
+   if(payload.action.actionType === TweetConstants.LOAD_TWEETS){
+        loadTweets(payload.action.data);
+        TweetStore.emitChange();
+   }
+   
     return true;
 })
